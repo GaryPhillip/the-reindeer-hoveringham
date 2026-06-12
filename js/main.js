@@ -238,10 +238,60 @@
 
 
   /* ----------------------------------------------------------
+     6. CURTAIN INTRO
+  ---------------------------------------------------------- */
+
+  function initCurtain() {
+    var ci      = document.getElementById('curtain-intro');
+    var enterBtn = document.getElementById('ci-enter');
+    if (!ci || !enterBtn) return;
+
+    // Hold scroll until curtain is dismissed
+    document.body.style.overflow = 'hidden';
+
+    function openCurtain() {
+      if (ci.classList.contains('is-opening')) return;
+      ci.classList.add('is-opening');
+      enterBtn.disabled = true;
+
+      // Remove scroll listeners once triggered
+      window.removeEventListener('wheel',     onWheel,     { passive: false });
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove',  onTouchMove, { passive: false });
+
+      setTimeout(function () { ci.classList.add('is-done'); },    2350);
+      setTimeout(function () {
+        ci.classList.add('is-gone');
+        document.body.style.overflow = '';
+      }, 2750);
+    }
+
+    // Scroll down (wheel) triggers open
+    function onWheel(e) {
+      if (e.deltaY > 0) { e.preventDefault(); openCurtain(); }
+    }
+    window.addEventListener('wheel', onWheel, { passive: false });
+
+    // Touch: swipe up triggers open
+    var touchY = 0;
+    function onTouchStart(e) { touchY = e.touches[0].clientY; }
+    function onTouchMove(e) {
+      if (touchY - e.touches[0].clientY > 30) { e.preventDefault(); openCurtain(); }
+    }
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchmove',  onTouchMove,  { passive: false });
+
+    // Keep Enter button as fallback
+    enterBtn.addEventListener('click', openCurtain);
+  }
+
+
+  /* ----------------------------------------------------------
      INIT
   ---------------------------------------------------------- */
 
   onReady(function () {
+    initCurtain();
     initMobileNav();
     initNavScroll();
     initScrollReveal();
