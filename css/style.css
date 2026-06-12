@@ -968,11 +968,12 @@ p + p { margin-top: 1.1em; }
 .person__img-wrap {
   overflow: hidden;
   margin-bottom: var(--sp-3);
+  border-radius: 0.625rem;
 }
 
 .person__img-wrap img {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: center top;
   display: block;
@@ -1010,7 +1011,7 @@ p + p { margin-top: 1.1em; }
 
 /* Billy featured — same crop, consistent row height */
 .person--featured .person__img-wrap img {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
 }
 
 .person--featured .person__name {
@@ -1027,7 +1028,12 @@ p + p { margin-top: 1.1em; }
 @media (min-width: 1024px) {
   .people__grid {
     gap: var(--sp-4);
-    align-items: end;
+    align-items: start;
+  }
+
+  /* Side cards pushed down to create triangle hierarchy with Billy at apex */
+  .people__grid .person:not(.person--featured) {
+    padding-top: var(--sp-8);
   }
 }
 
