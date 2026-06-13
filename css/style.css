@@ -495,6 +495,12 @@ p + p { margin-top: 1.1em; }
   height: 100%;
   object-fit: cover;
   object-position: center 55%;
+  animation: kenBurns 18s ease-out forwards;
+}
+
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
 }
 
 .hero__overlay {
@@ -575,14 +581,31 @@ p + p { margin-top: 1.1em; }
 
 .philosophy__title {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-size: var(--text-h2);
   font-weight: 400;
   color: var(--clr-charcoal);
   margin-bottom: var(--sp-3);
   display: inline-block;
-  border-bottom: 1px solid rgba(44, 42, 39, 0.3);
   padding-bottom: var(--sp-3);
   width: 100%;
+  position: relative;
+}
+
+.philosophy__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(44, 42, 39, 0.3);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms 300ms var(--ease-out);
+}
+
+.philosophy__title.is-visible::after {
+  transform: scaleX(1);
 }
 
 .philosophy__text {
@@ -854,11 +877,15 @@ p + p { margin-top: 1.1em; }
     grid-template-columns: 1fr 1fr;
     gap: var(--sp-12);
   }
+
+  /* Copy left, image right — opposite of menu section */
+  .about__layout > picture { order: 2; }
+  .about__copy             { order: 1; }
 }
 
 @media (min-width: 1024px) {
   .about__layout {
-    grid-template-columns: 4fr 5fr;
+    grid-template-columns: 5fr 4fr;
     gap: var(--sp-16);
     align-items: center;
   }
@@ -942,7 +969,121 @@ p + p { margin-top: 1.1em; }
 
 
 /* -------------------------------------------------------------
-   15. THE PEOPLE
+   15. SHIO
+   ------------------------------------------------------------- */
+
+.shio {
+  background-color: var(--clr-charcoal);
+  padding-block: var(--section-py);
+}
+
+.shio__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-8);
+  align-items: start;
+}
+
+.shio__logo {
+  display: block;
+  width: 72px;
+  margin-bottom: var(--sp-4);
+}
+
+.shio__eyebrow {
+  color: var(--clr-dry-grass);
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
+.shio__title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 400;
+  color: var(--clr-limestone);
+  line-height: 1.2;
+  margin-bottom: var(--sp-4);
+}
+
+.shio__text p {
+  color: var(--clr-stone);
+  font-size: clamp(0.875rem, 1vw, 0.9375rem);
+  line-height: 1.75;
+  margin-bottom: var(--sp-2);
+}
+
+.shio__service-line {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--clr-dry-grass);
+  margin-top: var(--sp-1);
+}
+
+.shio__instagram {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--sp-4);
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-limestone);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.shio__instagram:hover {
+  color: var(--clr-dry-grass);
+}
+
+/* SHIO image grid — mirrors menu grid proportions, flipped */
+.shio-photos__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.shio-photo--top {
+  grid-column: 1 / -1;
+  overflow: hidden;
+}
+
+.shio-photo--top img {
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.shio-photo--bottom {
+  overflow: hidden;
+}
+
+.shio-photo--bottom img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .shio__layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-12);
+    align-items: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .shio__layout {
+    grid-template-columns: 4fr 5fr;
+    gap: var(--sp-16);
+  }
+}
+
+
+/* -------------------------------------------------------------
+   16. THE PEOPLE
    ------------------------------------------------------------- */
 
 .people {
@@ -1015,7 +1156,7 @@ p + p { margin-top: 1.1em; }
 }
 
 .person--featured .person__name {
-  font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
 }
 
 @media (min-width: 900px) {
@@ -1057,7 +1198,7 @@ p + p { margin-top: 1.1em; }
 }
 
 .newsletter h2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-size: var(--text-h2);
   margin-bottom: var(--sp-3);
   font-weight: 400;
 }
@@ -1326,8 +1467,8 @@ p + p { margin-top: 1.1em; }
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 480ms var(--ease-out),
-              transform 480ms var(--ease-out);
+  transition: opacity 750ms var(--ease-out),
+              transform 750ms var(--ease-out);
 }
 
 .reveal.is-visible {
@@ -1342,9 +1483,17 @@ p + p { margin-top: 1.1em; }
 
 @keyframes heroFadeIn { to { opacity: 1; } }
 
-/* Stagger people */
-.person:nth-child(2) { transition-delay: 80ms; }
-.person:nth-child(3) { transition-delay: 160ms; }
+/* Stagger — menu photos */
+.menu-photos__top .menu-photo:nth-child(2) { transition-delay: 200ms; }
+.menu-photos__bottom .menu-photo           { transition-delay: 400ms; }
+
+/* Stagger — SHIO photos */
+.shio-photo:nth-child(2) { transition-delay: 200ms; }
+.shio-photo:nth-child(3) { transition-delay: 400ms; }
+
+/* Stagger — people cards */
+.person:nth-child(2) { transition-delay: 180ms; }
+.person:nth-child(3) { transition-delay: 360ms; }
 
 
 /* -------------------------------------------------------------
@@ -1362,11 +1511,50 @@ p + p { margin-top: 1.1em; }
 
   .reveal { opacity: 1; transform: none; }
   .hero__content { opacity: 1; animation: none; }
+  .hero__img { animation: none; }
+  .ci__logo, .ci__enter { animation: none; opacity: 1; transform: none; }
+  .philosophy__title::after { transition: none; transform: scaleX(1); }
 }
 
 
 /* -------------------------------------------------------------
-   20. PRINT
+   20. CUSTOM CURSOR (desktop pointer devices only)
+   ------------------------------------------------------------- */
+
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#custom-cursor.is-visible { opacity: 1; }
+
+#custom-cursor img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  /* black PNG → limestone */
+  filter: invert(1) sepia(0.45) brightness(0.97) hue-rotate(5deg);
+  transition: filter 0.15s ease, width 0.2s ease, height 0.2s ease;
+}
+
+#custom-cursor.is-hovering img {
+  width: 48px;
+  height: 48px;
+}
+
+#custom-cursor.on-light img {
+  /* limestone → charcoal: just remove the invert */
+  filter: none;
+}
+
+
+/* -------------------------------------------------------------
+   21. PRINT
    ------------------------------------------------------------- */
 
 @media print {
@@ -1500,6 +1688,7 @@ p + p { margin-top: 1.1em; }
   mix-blend-mode: screen;
   -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 60%, transparent 100%);
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 60%, transparent 100%);
+  animation: ci-fade-up 1000ms 350ms var(--ease-out) both;
 }
 
 .ci__enter {
@@ -1514,8 +1703,14 @@ p + p { margin-top: 1.1em; }
   text-transform: uppercase;
   padding: 0.375rem 0.125rem;
   cursor: pointer;
-  animation: ci-pulse 2.8s ease-in-out infinite;
+  animation: ci-fade-up 900ms 1050ms var(--ease-out) both,
+             ci-pulse 2.8s 1950ms ease-in-out infinite;
   transition: opacity 0.4s;
+}
+
+@keyframes ci-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes ci-pulse {
