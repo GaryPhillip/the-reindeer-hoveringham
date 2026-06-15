@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- Primary SEO -->
-  <title>The Reindeer Hoveringham | Gastropub &amp; Restaurant</title>
-  <meta name="description" content="A village pub on the cricket ground in Hoveringham. Head Chef Billy Mantle sources from named farms and creates the menu when the produce dictates. Open Wednesday to Sunday.">
+  <title>Village Gastropub, Nottinghamshire | The Reindeer Hoveringham</title>
+  <meta name="description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open Wednesday to Sunday.">
   <link rel="canonical" href="https://reindeerpub.com/">
 
   <!-- Open Graph -->
   <meta property="og:type"        content="restaurant">
   <meta property="og:title"       content="The Reindeer Hoveringham">
-  <meta property="og:description" content="A village pub on the cricket ground. Head Chef Billy Mantle sources from named farms and creates the menu when the produce dictates.">
+  <meta property="og:description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open Wednesday to Sunday.">
   <meta property="og:url"         content="https://reindeerpub.com/">
   <meta property="og:site_name"   content="The Reindeer Hoveringham">
   <meta property="og:image"       content="https://reindeerpub.com/assets/images/og/homepage.jpg">
@@ -23,7 +23,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="The Reindeer Hoveringham">
-  <meta name="twitter:description" content="A village pub on the cricket ground. Head Chef Billy Mantle sources from named farms and creates the menu when the produce dictates.">
+  <meta name="twitter:description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open Wednesday to Sunday.">
   <meta name="twitter:image"       content="https://reindeerpub.com/assets/images/og/homepage.jpg">
 
   <!-- Favicon -->
@@ -31,10 +31,9 @@
   <link rel="icon"             href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 
-  <!-- Google Fonts: Alike Angular (display) + Alike (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alike+Angular&family=Alike&display=swap" rel="stylesheet">
+  <!-- Self-hosted fonts: eliminates render-blocking Google Fonts request -->
+  <link rel="preload" href="assets/fonts/alike-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/alike-angular-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Preload hero -->
   <link rel="preload" as="image" href="assets/images/hero-terrace-1600.jpg" type="image/jpeg" fetchpriority="high">
@@ -62,6 +61,33 @@
           "postalCode": "NG14 7JR",
           "addressCountry": "GB"
         },
+        "description": "A village gastropub in Hoveringham, Nottinghamshire, beside the cricket ground. Head Chef Billy Mantle cooks seasonal menus built around named local producers. Sunday lunch served every week. Open Wednesday to Sunday.",
+        "image": "https://reindeerpub.com/assets/images/og/homepage.jpg",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 53.01411,
+          "longitude": -0.96111
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Wednesday", "Thursday"],
+            "opens": "12:00",
+            "closes": "22:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Friday", "Saturday"],
+            "opens": "12:00",
+            "closes": "23:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "12:00",
+            "closes": "18:00"
+          }
+        ],
         "servesCuisine": ["British", "Modern British", "Gastropub"],
         "priceRange": "££",
         "menu": "https://reindeerpub.com/menu/",
@@ -72,11 +98,40 @@
         ]
       },
       {
+        "@type": "Organisation",
+        "@id": "https://reindeerpub.com/#organisation",
+        "name": "The Reindeer Hoveringham",
+        "alternateName": "The Reindeer",
+        "url": "https://reindeerpub.com/",
+        "foundingDate": "2026",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://reindeerpub.com/the-reindeer.svg",
+          "width": 120,
+          "height": 48
+        },
+        "sameAs": [
+          "https://www.facebook.com/reindeerhoveringham",
+          "https://www.instagram.com/reindeerhoveringham"
+        ]
+      },
+      {
         "@type": "WebSite",
         "@id": "https://reindeerpub.com/#website",
         "url": "https://reindeerpub.com/",
         "name": "The Reindeer Hoveringham",
-        "publisher": { "@id": "https://reindeerpub.com/#restaurant" }
+        "publisher": { "@id": "https://reindeerpub.com/#organisation" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://reindeerpub.com/"
+          }
+        ]
       }
     ]
   }
@@ -91,6 +146,7 @@
     <div class="ci__r"></div>
     <div class="ci__centre">
       <img class="ci__logo" src="reindeer-full.png" alt="The Reindeer Hoveringham" width="200" height="200">
+      <p class="ci__eyeline">Welcome to The Reindeer</p>
       <button class="ci__enter" id="ci-enter" aria-label="Enter site">Scroll to enter</button>
     </div>
   </div>
@@ -117,11 +173,49 @@
 
       <nav aria-label="Primary navigation">
         <ul class="nav__links" role="list">
-          <li><a href="/menu/">Food &amp; Drink</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/events/">Events</a></li>
-          <li><a href="/find-us/">Visit</a></li>
-          <li><a href="/private-hire/">Private Hire</a></li>
+
+          <li class="nav__item nav__item--has-dropdown">
+            <button class="nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Food &amp; Drink
+              <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="nav__dropdown" role="list">
+              <li><a href="/menu/">Food and Drink</a></li>
+              <li><a href="/sunday-lunch/">Sunday Lunch</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item nav__item--has-dropdown">
+            <button class="nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              The Pub
+              <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="nav__dropdown" role="list">
+              <li><a href="/about/">About</a></li>
+              <li><a href="/events/">Events</a></li>
+              <li><a href="/private-hire/">Private Hire</a></li>
+              <li><a href="/gift-vouchers/">Gift Vouchers</a></li>
+            </ul>
+          </li>
+
+          <li class="nav__item nav__item--has-dropdown">
+            <button class="nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Plan Your Visit
+              <svg class="nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="nav__dropdown" role="list">
+              <li><a href="/find-us/">Find Us</a></li>
+              <li><a href="/book/">Book a Table</a></li>
+              <li><a href="/contact/">Contact</a></li>
+            </ul>
+          </li>
+
         </ul>
       </nav>
 
@@ -142,14 +236,34 @@
     </div>
 
     <nav class="nav__drawer" id="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
-      <ul class="nav__drawer-links" role="list">
-        <li><a href="/menu/">Food &amp; Drink</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/events/">Events</a></li>
-        <li><a href="/find-us/">Visit</a></li>
-        <li><a href="/private-hire/">Private Hire</a></li>
-        <li><a href="/gift-vouchers/">Gift Vouchers</a></li>
-      </ul>
+
+      <div class="nav__drawer-group">
+        <span class="nav__drawer-label">Food &amp; Drink</span>
+        <ul class="nav__drawer-links" role="list">
+          <li><a href="/menu/">Food and Drink</a></li>
+          <li><a href="/sunday-lunch/">Sunday Lunch</a></li>
+        </ul>
+      </div>
+
+      <div class="nav__drawer-group">
+        <span class="nav__drawer-label">The Pub</span>
+        <ul class="nav__drawer-links" role="list">
+          <li><a href="/about/">About</a></li>
+          <li><a href="/events/">Events</a></li>
+          <li><a href="/private-hire/">Private Hire</a></li>
+          <li><a href="/gift-vouchers/">Gift Vouchers</a></li>
+        </ul>
+      </div>
+
+      <div class="nav__drawer-group">
+        <span class="nav__drawer-label">Plan Your Visit</span>
+        <ul class="nav__drawer-links" role="list">
+          <li><a href="/find-us/">Find Us</a></li>
+          <li><a href="/book/">Book a Table</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </div>
+
       <a href="/book/" class="btn btn--ghost">Book a Table</a>
     </nav>
 
@@ -186,11 +300,11 @@
       </div>
 
       <div class="hero__content container">
-        <h1 class="hero__title">
-          Come.<br>Settle in.<br>Eat well.
-        </h1>
+        <span class="hero__eyebrow">Village gastropub &middot; Hoveringham, Nottinghamshire</span>
+        <h1 class="hero__title">Good food, warm hospitality and a relaxed atmosphere.</h1>
+        <p class="hero__opening">Opening July 2026</p>
         <div class="hero__actions">
-          <a href="/book/" class="btn btn--ghost">Book a Table</a>
+          <a href="/book/" class="btn btn--ghost">Reserve a Table</a>
           <a href="#menu" class="text-link text-link--light">See what we cook</a>
         </div>
       </div>
@@ -213,12 +327,14 @@
         <div class="philosophy__inner">
           <h2 class="philosophy__title reveal">Settle In</h2>
           <p class="philosophy__text reveal">
-            Sit, relax and hear the crack of leather on willow in Hoveringham.
-            The Reindeer is a village pub sited next to the picturesque cricket ground.
-            Head Chef and Owner Billy works closely with trusted local suppliers to source
-            the very best ingredients and then creates the menu to let the produce shine.
-            Open Wednesday to Sunday. Come and eat with us.
+            Sit, relax and hear the crack of leather on willow. The Reindeer is a village
+            gastropub in Hoveringham, Nottinghamshire, beside the cricket ground. The food is the reason to make the journey.
+            The welcome is the reason to come back. We are open Wednesday to Sunday. Come eat with us.
           </p>
+          <div class="philosophy__hours reveal">
+            <p>Wednesday to Saturday &middot; 11am to 10.30pm</p>
+            <p>Sunday &middot; Noon to 10.30pm</p>
+          </div>
         </div>
       </div>
     </section>
@@ -273,8 +389,8 @@
             <h2 id="menu-heading" class="reveal">What We Cook</h2>
 
             <div class="menu-editorial-text reveal">
-              <p>Our chefs build each menu around the finest seasonal ingredients available that week. From dry-aged beef reared at Dunwood Farms to fresh seafood from Flying Fish Cornwall, every ingredient is sourced from producers we know and trust. The seasons and the quality of the produce dictate what appears on the plate.</p>
-              <p>There are no signature dishes and no standing menu, just exceptional ingredients, thoughtfully prepared and cooked with restraint, care and respect.</p>
+              <p>Each menu is built around the finest seasonal ingredients available that week. Dry-aged beef from Dunwood Farms in Staffordshire. Fresh seafood from Flying Fish Cornwall. Producers we know and trust, ingredients that earn their place.</p>
+              <p>There are no signature dishes and no standing menu. If something better comes along, the menu changes.</p>
               <p class="menu-service-line">Lunch &amp; Dinner &middot; Wednesday&ndash;Saturday &middot; Set Lunch from &pound;27 &middot; Sunday Lunch from &pound;33</p>
             </div>
 
@@ -317,8 +433,7 @@
 
             <div class="about__quote reveal">
               <p>The Reindeer exists for one reason: to serve the very best produce we can get our hands on. Great ingredients have a story behind them: the people who raise them, grow them and care for them. Our responsibility is to honour that work by cooking with skill, restraint and attention to detail.</p>
-              <p>The menu changes with the seasons and the ingredients lead the way. It&rsquo;s also shaped by how I enjoy eating myself: gathering around a table, ordering a variety of dishes and sharing great food with family and friends. Many of our dishes are designed with that in mind, allowing guests to experience more of the menu together. Equally, if you&rsquo;d rather enjoy a dish all to yourself, that&rsquo;s absolutely fine too.</p>
-              <p>Every decision, from the kitchen to the dining room, is guided by a commitment to quality.</p>
+              <p>The menu changes with the seasons and the ingredients lead the way. It is also shaped by how I like to eat: a bit of this, a bit of that, passing dishes round the table and trying everything. Many of our dishes are designed with that in mind. But there are no rules here. Eat however you like.</p>
               <p>Simple in principle. Uncompromising in execution.</p>
               <cite class="about__attribution">&mdash;&thinsp;Billy Mantle</cite>
             </div>
@@ -387,7 +502,7 @@
             <div class="shio__text">
               <p>Permanently situated on The Reindeer&rsquo;s terrace, SHIO is our Asian-inspired street food kitchen, bringing bold flavours and relaxed outdoor dining to Hoveringham. Cooked over traditional Japanese charcoal, the menu draws inspiration from across Asia.</p>
               <p>Popular dishes include Korean fried chicken with our signature SHIO sauce, teriyaki beef skewers from the grill and a regularly changing selection of seasonal specials. Whether you&rsquo;re joining us for a quick bite, drinks with friends or a relaxed meal in the sun, SHIO offers a more casual dining experience alongside The Reindeer&rsquo;s restaurant.</p>
-              <p class="shio__service-line">Permanently on our terrace &middot; Casual dining &middot; Serious flavour</p>
+              <p class="shio__service-line">Always on our terrace &middot; Thursday to Sunday &middot; Casual dining &middot; Serious flavour</p>
             </div>
             <a href="https://www.instagram.com/shionotts" class="shio__instagram" target="_blank" rel="noopener noreferrer">@shionotts &rarr;</a>
           </div>
@@ -576,54 +691,37 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container">
 
-      <div class="footer__logo-wrap">
-        <img
-          src="the-reindeer.svg"
-          alt="The Reindeer Hoveringham"
-          class="footer__logo"
-          width="140"
-          height="56"
-        >
-      </div>
-
       <div class="footer__grid">
 
-        <div>
-          <span class="footer__heading">Eat and Drink</span>
-          <ul class="footer__nav" role="list">
-            <li><a href="/menu/">Food and Drink</a></li>
-            <li><a href="/sunday-lunch/">Sunday Lunch</a></li>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/events/">Events</a></li>
-            <li><a href="/private-hire/">Private Hire</a></li>
-            <li><a href="/gift-vouchers/">Gift Vouchers</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <span class="footer__heading">Visit</span>
+        <!-- Column 1: Brand + Address -->
+        <div class="footer__col footer__col--brand">
+          <img
+            src="the-reindeer.svg"
+            alt="The Reindeer Hoveringham"
+            class="footer__logo"
+            width="140"
+            height="56"
+          >
           <address class="footer__address">
-            <p>
-              The Reindeer Hoveringham<br>
-              Main Street, Hoveringham<br>
-              Nottinghamshire, NG14 7JR
-            </p>
-            <p style="margin-top:1rem;">
-              <a href="tel:07975884881">07975 884881</a>
-            </p>
+            Main Street, Hoveringham<br>
+            Nottinghamshire, NG14 7JR<br>
+            <a href="tel:07975884881">07975 884881</a>
           </address>
-
-          <ul class="footer__hours" aria-label="Opening hours" style="margin-top:1.5rem;">
-            <li><span>Mon &ndash; Tue</span><span>Closed</span></li>
-            <li><span>Wed &ndash; Thu</span><span>12pm &ndash; 10pm</span></li>
-            <li><span>Fri &ndash; Sat</span><span>12pm &ndash; 11pm</span></li>
-            <li><span>Sunday</span><span>12pm &ndash; 6pm</span></li>
-          </ul>
         </div>
 
-        <div>
-          <span class="footer__heading">Connect</span>
+        <!-- Column 2: Hours -->
+        <div class="footer__col footer__col--hours">
+          <span class="footer__heading">Opening Hours</span>
+          <ul class="footer__hours" aria-label="Opening hours">
+            <li><span>Wednesday to Saturday</span><span>11am to 10.30pm</span></li>
+            <li><span>Sunday</span><span>Noon to 10.30pm</span></li>
+          </ul>
+          <p class="footer__hours-note">Closed Monday and Tuesday</p>
+        </div>
 
+        <!-- Column 3: Social + Email signup -->
+        <div class="footer__col footer__col--connect">
+          <span class="footer__heading">Follow Us</span>
           <div class="footer__social">
             <a href="https://www.instagram.com/reindeerhoveringham" target="_blank" rel="noopener noreferrer" aria-label="The Reindeer on Instagram (opens in new tab)">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -641,41 +739,33 @@
             </a>
           </div>
 
-          <div class="footer__signup" style="margin-top:1.5rem;">
-            <span class="footer__heading" style="margin-bottom:0.75rem;">Stay in touch</span>
-            <form id="footer-signup-form" name="newsletter-footer" method="POST" data-netlify="true" netlify-honeypot="bot-field-footer">
-              <input type="hidden" name="form-name" value="newsletter-footer">
-              <p hidden><input name="bot-field-footer" tabindex="-1"></p>
-              <label for="footer-email" class="sr-only">Email address</label>
-              <input type="email" id="footer-email" name="email" placeholder="Your email address" autocomplete="email" required>
-              <button type="submit" class="btn btn--ghost">Sign up</button>
-            </form>
-            <div id="footer-signup-success" class="newsletter__success" role="status" aria-live="polite">You are signed up.</div>
-          </div>
+          <span class="footer__heading">Stay in Touch</span>
+          <form id="footer-signup-form" name="newsletter-footer" method="POST" data-netlify="true" netlify-honeypot="bot-field-footer" class="footer__signup-form">
+            <input type="hidden" name="form-name" value="newsletter-footer">
+            <p hidden><input name="bot-field-footer" tabindex="-1" aria-hidden="true"></p>
+            <label for="footer-email" class="sr-only">Email address</label>
+            <input type="email" id="footer-email" name="email" placeholder="Your email address" autocomplete="email" required>
+            <button type="submit" class="btn btn--ghost">Sign up</button>
+          </form>
+          <div id="footer-signup-success" class="newsletter__success" role="status" aria-live="polite">You are signed up.</div>
         </div>
 
       </div>
 
-      <p class="footer__service-charge">
-        A 12.5% discretionary service charge is applied to all bills and distributed
-        in full as gratuity to our team. For dietary requirements or allergies,
-        please <a href="/contact/" style="color:rgba(246,243,236,0.5);text-decoration:underline;">contact us</a> before visiting.
-      </p>
-
       <div class="footer__bottom">
-        <p class="footer__copyright">
-          &copy; <span class="js-year">2026</span> The Reindeer Hoveringham. All rights reserved.
+        <p class="footer__service-charge">
+          12.5% discretionary service charge applied to all bills and distributed in full to our team.
+          For allergies or dietary requirements, please <a href="/contact/">contact us</a> before visiting.
         </p>
-        <ul class="footer__legal" role="list">
-          <li><a href="/privacy-policy/">Privacy Policy</a></li>
-          <li><a href="/cookie-policy/">Cookie Policy</a></li>
-          <li><a href="/terms/">Terms</a></li>
-          <li><!-- Modus Media credit — dark -->
-<a href="https://modusmedia.co.uk" class="mm-credit" target="_blank" rel="noopener noreferrer" title="Website by Modus Media, Nottingham" style="display:inline-flex;align-items:center;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;opacity:0.55;transition:opacity 0.3s;" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=0.55">
-  <span style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;color:rgba(255,255,255,0.5);padding-right:9px;margin-right:9px;border-right:1px solid rgba(255,255,255,0.2);">Built by</span>
-  <span style="font-size:12px;font-weight:700;letter-spacing:-0.09em;color:#ffffff;">modus media<span style="color:#782525;letter-spacing:0;">.</span></span>
-</a></li>
-        </ul>
+        <div class="footer__legal-row">
+          <p class="footer__copyright">&copy; <span class="js-year">2026</span> The Reindeer Hoveringham</p>
+          <ul class="footer__legal" role="list">
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/cookie-policy/">Cookie Policy</a></li>
+            <li><a href="/terms/">Terms &amp; Conditions</a></li>
+            <li><a href="https://modusmedia.co.uk" class="mm-credit" target="_blank" rel="noopener noreferrer" title="Website by Modus Media, Nottingham" style="display:inline-flex;align-items:center;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;opacity:0.55;transition:opacity 0.3s;" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=0.55"><span style="font-size:9px;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;color:rgba(255,255,255,0.5);padding-right:8px;margin-right:8px;border-right:1px solid rgba(255,255,255,0.2);">Built by</span><span style="font-size:12px;font-weight:700;letter-spacing:-0.09em;color:#ffffff;">modus media<span style="color:#782525;letter-spacing:0;">.</span></span></a></li>
+          </ul>
+        </div>
       </div>
 
     </div>

@@ -93,7 +93,55 @@
 
 
   /* ----------------------------------------------------------
-     2. SCROLL-BASED NAV STATE
+     2. DROPDOWN NAVIGATION
+  ---------------------------------------------------------- */
+
+  function initDropdownNav() {
+    var items = $$('.nav__item--has-dropdown');
+    if (!items.length) return;
+
+    function closeAll(except) {
+      items.forEach(function (item) {
+        if (item === except) return;
+        item.classList.remove('nav__item--open');
+        var btn = $('[aria-expanded]', item);
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    items.forEach(function (item) {
+      var btn = $('[aria-expanded]', item);
+      if (!btn) return;
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var isOpen = item.classList.contains('nav__item--open');
+        closeAll();
+        if (!isOpen) {
+          item.classList.add('nav__item--open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* Close on click outside */
+    document.addEventListener('click', function () { closeAll(); });
+
+    /* Close on Escape */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeAll();
+    });
+
+    /* Close when viewport goes mobile */
+    var mql = window.matchMedia('(max-width: 1023px)');
+    mql.addEventListener('change', function (e) {
+      if (e.matches) closeAll();
+    });
+  }
+
+
+  /* ----------------------------------------------------------
+     3. SCROLL-BASED NAV STATE
   ---------------------------------------------------------- */
 
   function initNavScroll() {
@@ -349,6 +397,7 @@
   onReady(function () {
     initCurtain();
     initMobileNav();
+    initDropdownNav();
     initNavScroll();
     initScrollReveal();
     initNewsletterForm();
