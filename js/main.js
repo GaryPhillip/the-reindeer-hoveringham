@@ -335,62 +335,6 @@
 
 
   /* ----------------------------------------------------------
-     7. CUSTOM CURSOR
-  ---------------------------------------------------------- */
-
-  function initCustomCursor() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-    var cursor = document.getElementById('custom-cursor');
-    if (!cursor) return;
-
-    /* Hide native cursor */
-    var style = document.createElement('style');
-    style.textContent = '*, *:hover { cursor: none !important; }';
-    document.head.appendChild(style);
-
-    /* Offset so tip of antlers is the hotspot */
-    cursor.style.transform = 'translate(-50%, -50%)';
-
-    /* Light-background sections (excludes nav, hero, about, shio, footer — all dark) */
-    var lightSections = Array.from(document.querySelectorAll(
-      '.philosophy, .menu, .sunday, .people'
-    ));
-
-    var NAV_H = 72;
-    var mouseX = 0, mouseY = 0;
-
-    function updateCursorColour() {
-      var onLight = mouseY > NAV_H && lightSections.some(function (el) {
-        var r = el.getBoundingClientRect();
-        return mouseY >= Math.max(r.top, NAV_H) && mouseY <= r.bottom;
-      });
-      cursor.classList.toggle('on-light', onLight);
-    }
-
-    document.addEventListener('mousemove', function (e) {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top  = mouseY + 'px';
-      cursor.classList.add('is-visible');
-      updateCursorColour();
-    }, { passive: true });
-
-    window.addEventListener('scroll', updateCursorColour, { passive: true });
-
-    document.addEventListener('mouseleave', function () {
-      cursor.classList.remove('is-visible');
-    });
-
-    document.addEventListener('mouseover', function (e) {
-      var hoverable = e.target.closest('a, button, [role="button"], label, input, select, textarea');
-      cursor.classList.toggle('is-hovering', !!hoverable);
-    }, { passive: true });
-  }
-
-
-  /* ----------------------------------------------------------
      INIT
   ---------------------------------------------------------- */
 
@@ -402,7 +346,6 @@
     initScrollReveal();
     initNewsletterForm();
     initFooterYear();
-    initCustomCursor();
   });
 
 }());

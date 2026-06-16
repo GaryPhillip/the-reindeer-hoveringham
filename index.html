@@ -7,13 +7,13 @@
 
   <!-- Primary SEO -->
   <title>Village Gastropub, Nottinghamshire | The Reindeer Hoveringham</title>
-  <meta name="description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open Wednesday to Sunday.">
+  <meta name="description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open seven days a week.">
   <link rel="canonical" href="https://reindeerpub.com/">
 
   <!-- Open Graph -->
   <meta property="og:type"        content="restaurant">
   <meta property="og:title"       content="The Reindeer Hoveringham">
-  <meta property="og:description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open Wednesday to Sunday.">
+  <meta property="og:description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open seven days a week.">
   <meta property="og:url"         content="https://reindeerpub.com/">
   <meta property="og:site_name"   content="The Reindeer Hoveringham">
   <meta property="og:image"       content="https://reindeerpub.com/assets/images/og/homepage.jpg">
@@ -23,7 +23,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="The Reindeer Hoveringham">
-  <meta name="twitter:description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open Wednesday to Sunday.">
+  <meta name="twitter:description" content="A village gastropub in Hoveringham, Nottinghamshire. Seasonal menus, Sunday lunch and a kitchen that takes produce seriously. Open seven days a week.">
   <meta name="twitter:image"       content="https://reindeerpub.com/assets/images/og/homepage.jpg">
 
   <!-- Favicon -->
@@ -61,7 +61,7 @@
           "postalCode": "NG14 7JR",
           "addressCountry": "GB"
         },
-        "description": "A village gastropub in Hoveringham, Nottinghamshire, beside the cricket ground. Head Chef Billy Mantle cooks seasonal menus built around named local producers. Sunday lunch served every week. Open Wednesday to Sunday.",
+        "description": "A village gastropub in Hoveringham, Nottinghamshire, beside the cricket ground. Head Chef Billy Mantle cooks seasonal menus built around named local producers. Sunday lunch served every week. Open seven days a week.",
         "image": "https://reindeerpub.com/assets/images/og/homepage.jpg",
         "geo": {
           "@type": "GeoCoordinates",
@@ -69,6 +69,12 @@
           "longitude": -0.96111
         },
         "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday"],
+            "opens": "16:00",
+            "closes": "21:00"
+          },
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Wednesday", "Thursday"],
@@ -85,7 +91,7 @@
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": "Sunday",
             "opens": "12:00",
-            "closes": "18:00"
+            "closes": "22:00"
           }
         ],
         "servesCuisine": ["British", "Modern British", "Gastropub"],
@@ -303,8 +309,8 @@
 
       <div class="hero__content container">
         <span class="hero__eyebrow">Village gastropub &middot; Hoveringham, Nottinghamshire</span>
-        <h1 class="hero__title">Good food, warm hospitality and a relaxed atmosphere.</h1>
-        <p class="hero__opening">Opening July 2026</p>
+        <h1 class="hero__title">Bar Now Open</h1>
+        <p class="hero__announce">Kitchen opening 10th July 2026 &middot; Bookings now live</p>
         <div class="hero__actions">
           <a href="/book/" class="btn btn--ghost">Reserve a Table</a>
           <a href="#menu" class="text-link text-link--light">See what we cook</a>
@@ -331,11 +337,14 @@
           <p class="philosophy__text reveal">
             Sit, relax and hear the crack of leather on willow. The Reindeer is a village
             gastropub in Hoveringham, Nottinghamshire, beside the cricket ground. The food is the reason to make the journey.
-            The welcome is the reason to come back. We are open Wednesday to Sunday. Come eat with us.
+            The welcome is the reason to come back. We are open every day. Come eat with us.
           </p>
           <div class="philosophy__hours reveal">
-            <p>Wednesday to Saturday &middot; 11am to 10.30pm</p>
-            <p>Sunday &middot; Noon to 10.30pm</p>
+            <p>Mon &amp; Tue &middot; Bar 4&ndash;9pm</p>
+            <p>Wed &amp; Thu &middot; Bar 12&ndash;10pm &middot; Kitchen 12&ndash;3 &amp; 5&ndash;9pm</p>
+            <p>Fri &amp; Sat &middot; Bar 12&ndash;11pm &middot; Kitchen 12&ndash;3 &amp; 5&ndash;9pm</p>
+            <p>Sun &middot; Bar 12&ndash;10pm &middot; Kitchen 12&ndash;6pm</p>
+            <p>SHIO Terrace &middot; Thu&ndash;Sun 12&ndash;9pm</p>
           </div>
         </div>
       </div>
@@ -720,9 +729,11 @@
         <div class="footer__col footer__col--hours">
           <span class="footer__heading">Opening Hours</span>
           <ul class="footer__hours" aria-label="Opening hours">
-            <li>Wednesday to Saturday &middot; 11am to 10.30pm</li>
-            <li>Sunday &middot; Noon to 10.30pm</li>
-            <li class="footer__hours-note">Closed Monday and Tuesday</li>
+            <li>Mon &amp; Tue &middot; Bar 4&ndash;9pm</li>
+            <li>Wed &amp; Thu &middot; Bar 12&ndash;10pm &middot; Kitchen 12&ndash;3 &amp; 5&ndash;9pm</li>
+            <li>Fri &amp; Sat &middot; Bar 12&ndash;11pm &middot; Kitchen 12&ndash;3 &amp; 5&ndash;9pm</li>
+            <li>Sun &middot; Bar 12&ndash;10pm &middot; Kitchen 12&ndash;6pm</li>
+            <li class="footer__hours-note">SHIO Terrace &middot; Thu&ndash;Sun 12&ndash;9pm</li>
           </ul>
         </div>
 
@@ -785,10 +796,6 @@
   <style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}</style>
   <script src="js/main.js" defer></script>
 
-  <!-- Custom cursor -->
-  <div id="custom-cursor" aria-hidden="true">
-    <img src="assets/images/cursor-deer.png" alt="">
-  </div>
 
 </body>
 </html>

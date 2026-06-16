@@ -693,9 +693,19 @@ p + p { margin-top: 1.1em; }
 .hero__title {
   color: var(--clr-limestone);
   max-width: 16ch;
-  margin-bottom: var(--sp-4);
+  margin-bottom: var(--sp-2);
   font-weight: 400;
   text-shadow: 0 1px 32px rgba(0, 0, 0, 0.2);
+}
+
+.hero__announce {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--clr-limestone);
+  margin-bottom: var(--sp-4);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.3);
 }
 
 .hero__opening {
@@ -1739,40 +1749,6 @@ p + p { margin-top: 1.1em; }
 }
 
 
-/* -------------------------------------------------------------
-   20. CUSTOM CURSOR (desktop pointer devices only)
-   ------------------------------------------------------------- */
-
-#custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 10000;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-#custom-cursor.is-visible { opacity: 1; }
-
-#custom-cursor img {
-  width: 32px;
-  height: 32px;
-  display: block;
-  /* black PNG → limestone: sepia warms it, brightness pulls it off pure white */
-  filter: invert(1) sepia(0.75) brightness(0.78) hue-rotate(8deg);
-  transition: filter 0.15s ease, width 0.2s ease, height 0.2s ease;
-}
-
-#custom-cursor.is-hovering img {
-  width: 48px;
-  height: 48px;
-}
-
-#custom-cursor.on-light img {
-  /* limestone → charcoal: just remove the invert */
-  filter: none;
-}
 
 
 /* -------------------------------------------------------------
