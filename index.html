@@ -691,22 +691,32 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container">
 
+      <!-- Deer badge: centred above columns -->
+      <div class="footer__badge">
+        <img
+          src="reindeer-full.png"
+          alt="The Reindeer Hoveringham"
+          class="footer__logo"
+          width="120"
+          height="120"
+        >
+      </div>
+
       <div class="footer__grid">
 
-        <!-- Column 1: Brand + Address + Hours -->
+        <!-- Column 1: Address -->
         <div class="footer__col footer__col--brand">
-          <img
-            src="reindeer-full.png"
-            alt="The Reindeer Hoveringham"
-            class="footer__logo"
-            width="85"
-            height="85"
-          >
+          <span class="footer__heading">Address</span>
           <address class="footer__address">
             Main Street, Hoveringham<br>
             Nottinghamshire, NG14 7JR<br>
             <a href="tel:07975884881">07975 884881</a>
           </address>
+        </div>
+
+        <!-- Column 2: Opening Hours -->
+        <div class="footer__col footer__col--hours">
+          <span class="footer__heading">Opening Hours</span>
           <ul class="footer__hours" aria-label="Opening hours">
             <li>Wednesday to Saturday &middot; 11am to 10.30pm</li>
             <li>Sunday &middot; Noon to 10.30pm</li>
@@ -714,8 +724,8 @@
           </ul>
         </div>
 
-        <!-- Column 2: Social + Email signup -->
-        <div class="footer__col footer__col--connect">
+        <!-- Column 3: Social -->
+        <div class="footer__col footer__col--social">
           <span class="footer__heading">Follow Us</span>
           <div class="footer__social">
             <a href="https://www.instagram.com/reindeerhoveringham" target="_blank" rel="noopener noreferrer" aria-label="The Reindeer on Instagram (opens in new tab)">
@@ -733,18 +743,21 @@
               Facebook
             </a>
           </div>
-
-          <span class="footer__heading">Stay in Touch</span>
-          <form id="footer-signup-form" name="newsletter-footer" method="POST" data-netlify="true" netlify-honeypot="bot-field-footer" class="footer__signup-form">
-            <input type="hidden" name="form-name" value="newsletter-footer">
-            <p hidden><input name="bot-field-footer" tabindex="-1" aria-hidden="true"></p>
-            <label for="footer-email" class="sr-only">Email address</label>
-            <input type="email" id="footer-email" name="email" placeholder="Your email address" autocomplete="email" required>
-            <button type="submit" class="btn btn--ghost">Sign up</button>
-          </form>
-          <div id="footer-signup-success" class="newsletter__success" role="status" aria-live="polite">You are signed up.</div>
         </div>
 
+      </div>
+
+      <!-- Email collector: centred, full width below grid -->
+      <div class="footer__email-wrap">
+        <span class="footer__heading">Stay in Touch</span>
+        <form id="footer-signup-form" name="newsletter-footer" method="POST" data-netlify="true" netlify-honeypot="bot-field-footer" class="footer__signup-form">
+          <input type="hidden" name="form-name" value="newsletter-footer">
+          <p hidden><input name="bot-field-footer" tabindex="-1" aria-hidden="true"></p>
+          <label for="footer-email" class="sr-only">Email address</label>
+          <input type="email" id="footer-email" name="email" placeholder="Your email address" autocomplete="email" required>
+          <button type="submit" class="btn btn--ghost">Sign up</button>
+        </form>
+        <div id="footer-signup-success" class="newsletter__success" role="status" aria-live="polite">You are signed up.</div>
       </div>
 
       <div class="footer__bottom">
